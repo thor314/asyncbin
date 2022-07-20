@@ -4,6 +4,8 @@
 #![allow(unused_imports)]
 #![allow(unused_variables)]
 #![allow(dead_code)]
+use std::rc::Rc;
+
 use anyhow::Result;
 use error::MyError;
 use validator::{Validate, ValidationError};
@@ -18,8 +20,8 @@ fn main() -> Result<()> {
 	let context = utils::setup()?;
 	if std::env::var("DOTENV_OK").is_ok() {
 		log::info!("Hello, {}!", context.args.name);
-		#[cfg(feature = "clap_cargo")]
-		log::debug!("and build info: {:#?}", context.cli_info);
+		#[cfg(feature = "some_feature")]
+		log::debug!("and build info: {:#?}", context.s);
 	}
 	Ok(())
 }

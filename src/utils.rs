@@ -15,8 +15,6 @@ pub(crate) fn setup() -> Result<Context> {
 	init_logger();
 	let context = Context::new(
 		Args::parse(),
-		#[cfg(feature = "clap_cargo")]
-		CliInfo::parse(),
 	);
 	context.validate()?;
 	Ok(context)
